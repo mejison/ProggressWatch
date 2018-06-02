@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Document</title>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" />
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.7/css/all.css" />
+        <link href="https://fonts.googleapis.com/css?family=Nixie+One" rel="stylesheet">
+        <link rel="stylesheet" href="./main.css">
+    </head>
+    <body >
+        <div class="container" id="app">
+            <div class="row">
+                <div class="col-md-4" v-for="(e, index) in emploees" :key="index">
+                    <div class="card mb-4 box-shadow">
+                        <div class="progress-interest">
+                            {{ e.progress }} %
+                        </div>
+                        <div class="card-body">
+                            <div class="progress">
+                                <div class="progress-bar progress-bar-striped progress-bar-animated" :class="{'bg-danger' : e.progress < 50, 'bg-warning': e.progress > 50 && e.progress < 80, 'bg-success' : e.progress > 80}" :style="{ 'width': e.progress + '%' }"></div>
+                            </div>
+                            <p class="card-text">
+                                @{{ e.name }}
+                                <i class="fas fa-eye" @click="toggleWatch(e.index)" v-show=" ! watch.indexOf(e.index)"></i>
+                                <i class="fas fa-eye-slash" @click="toggleWatch(e.index)" v-show="watch.indexOf(e.index)"></i>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+        <script src="./main.js"></script>
+        <script src="https://cdn.onesignal.com/sdks/OneSignalSDK.js" async=""></script>
+        <script>
+            var OneSignal = window.OneSignal || [];
+            OneSignal.push(function() {
+                OneSignal.init({
+                appId: "97c99300-b91a-4549-839c-4cfaa3074e4b",
+                autoRegister: false,
+                notifyButton: {
+                    enable: true,
+                },
+                });
+            });
+        </script>
+    </body>
+</html>

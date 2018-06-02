@@ -1,0 +1,45 @@
+.container {
+    padding-top: 50px;
+}
+
+.card {
+    position: relative;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    min-width: 0;
+    word-wrap: break-word;
+    background-color: #fff;
+    background-clip: border-box;
+    border: 1px solid rgba(0,0,0,.125);
+    border-radius: .25rem;
+}
+
+.card-body {
+    flex: 1 1 auto;
+    padding: 1.25rem;
+    background-color: #fff;
+}
+
+.progress-interest {
+    background: #333;
+    text-align: center;
+    line-height: 225px;
+    height: 225px;
+    color: #fff;
+    font-size: 28px;
+    font-family: 'Nixie One', cursive;
+}
+
+.fa-eye {
+    color: green;
+}
+
+.fa-eye-slash {
+    color: red;
+}
+
+.body {
+    background-color: #f8f9fa !important;
+}
