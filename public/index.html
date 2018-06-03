@@ -24,8 +24,8 @@
                             </div>
                             <p class="card-text">
                                 @{{ e.name }}
-                                <i class="fas fa-eye" @click="toggleWatch(e.index)" v-show=" ! watch.indexOf(e.index)"></i>
-                                <i class="fas fa-eye-slash" @click="toggleWatch(e.index)" v-show="watch.indexOf(e.index)"></i>
+                                <i class="fas fa-eye" @click="toggleWatch(e.index)" v-show="(watch.indexOf(e.index) + 1)"></i>
+                                <i class="fas fa-eye-slash" @click="toggleWatch(e.index)" v-show=" ! (watch.indexOf(e.index) + 1)"></i>
                             </p>
                         </div>
                     </div>

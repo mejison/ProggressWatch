@@ -10,6 +10,6 @@ const data = [
 
 module.exports = () => {
     data.map((i) => {
-        new Emploee({name: i.name, index: i.index}).save();
+        new Emploee({name: i.name, index: i.index, watcher: []}).save();
     })
 }
