@@ -3,7 +3,8 @@ new Vue({
     data: function() {
         return {
             emploees: [],
-            watch: []
+            watch: [],
+            hash: ""
         }
     },
     methods: {
