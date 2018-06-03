@@ -8,14 +8,11 @@ new Vue({
     },
     methods: {
         toggleWatch: function(index) {
-            
             if ( ! this.watch.some(i => i == index)) {
                 this.watch.push(index);
             } else {
                 this.watch = this.watch.filter(i => i != index);
             }
-
-            console.log(this.watch)
 
             fetch('/api/watcher', {
                 headers: {
@@ -39,11 +36,18 @@ new Vue({
             }
         },
         getHash: function() {
-            return '2342sdf234';
+            if ( ! this.hash) {
+                this.notify('error', 'No subscribe');
+                return;
+            }
+            return this.hash;
+        },
+        checkOneSignal: function() {
+
+        },
+        notify: function(type, message) {
+            toastr[type](message);
         }
-    },
-    created: function() {
-        this.getWatched();
     },
     mounted: function() {
         let self = this;
@@ -54,5 +58,18 @@ new Vue({
             .then(function(data) {
                 self.emploees = data;
             });
+        
+        if (window.OneSignal) {
+            OneSignal.push(function() {
+                OneSignal.isPushNotificationsEnabled(function(isEnabled) {
+                    if (isEnabled) {
+                        OneSignal.getUserId(function(userId) {
+                            self.hash = userId;
+                            self.getWatched();
+                        });
+                    }
+                })
+            });
+        }
     }
 })
